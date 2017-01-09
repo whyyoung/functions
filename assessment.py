@@ -82,6 +82,7 @@ included in the doctest.
 #    (a) Write a function that takes a town name as a string and evaluates to
 #        `True` if it is your hometown, and `False` otherwise.
 def home_town(town_name):
+    """check if user is from the same hometown"""
     if town_name == 'Las Vegas':
         return True
     else:
@@ -90,6 +91,7 @@ def home_town(town_name):
 #    (b) Write a function that takes a first and last name as arguments and
 #        returns the concatenation of the two names in one string.
 def full_name(first_name, last_name):
+    """combine first and last name into full name"""
     return first_name + ' ' + last_name
 
 
@@ -99,6 +101,7 @@ def full_name(first_name, last_name):
 #        here', where are you from?" depending on what the function from part
 #        (a) evaluates to.
 def greeting(home, first_name, last_name):
+    """personalized greeting with full name and hometown check"""
     whole_name = full_name(first_name, last_name)
     if home_town(home) == True:
         return "Hi, {}. We're from the same place!".format(whole_name)
@@ -169,7 +172,9 @@ def append_to_list(lst, num):
 #    fees.
 
 def calculate_price(base_price, state_abbrev, tax_percent=.05):
+    """calculates price including tax and state-specific fees"""
     price_with_tax = base_price + (base_price * tax_percent)
+    # default amount without any extra taxes or fees
     if state_abbrev == 'CA':
         print "{:.1f}".format(price_with_tax + (price_with_tax * .03)) 
         #formatting to pass the doctest; was too long of a float initially
@@ -201,7 +206,9 @@ def calculate_price(base_price, state_abbrev, tax_percent=.05):
 # write a Python function that takes in an arbitrary number of arguments.
 
 def combine_list(list1, *args):
+    """combine a list and an unknown amount of arguments into one list"""
         for arg in args:
+            # *args will take a non-fixed amount of arguments
             list1.append(arg)
         print list1
 
@@ -215,12 +222,13 @@ def combine_list(list1, *args):
 # Example:
 
 def make_many_words(word):
-
+    """returns initial word and same word multiplied 3 times"""
     def multiply_word(single_word):
         #inner function to repeat word 3 times
         return single_word * 3
 
     return word, multiply_word(word)
+    #outer function prints word and calls inner function to multiple word 3 times
 
 #>>> outer("Balloonicorn")
 #('Balloonicorn', 'BalloonicornBalloonicornBalloonicorn')
